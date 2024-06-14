@@ -1,0 +1,31 @@
+/* src/app/menu-bar/menu-bar.component.css */
+
+.menu-bar {
+    background-color: #00796b;
+    color: #fff;
+    padding: 10px 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .menu-bar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .menu-bar li {
+    margin: 0;
+  }
+  
+  .menu-bar a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .menu-bar a:hover {
+    text-decoration: underline;
+  }
+  

@@ -1,0 +1,66 @@
+/* src/app/arancel/arancel.component.css */
+
+/* Estilo general del contenedor */
+.arancel-container {
+    max-width: 600px; /* Limita el ancho del contenedor */
+    margin: 2 auto; /* Centra el contenedor horizontalmente */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .school-image {
+    position: absolute;
+    top: 1px;
+    left: 1px; /* Ajusta la distancia desde la derecha según sea necesario */
+  }
+
+
+  
+  /* Estilo de las entradas del formulario */
+  .arancel-container .form-group input {
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  
+  /* Estilo del botón de envío */
+  .arancel-container .btn {
+  background-color: #00796b; /* Fondo verde verde para las etiquetas */
+    border: none;
+    padding: 10px 10px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 30%; 
+    margin-top: 20px;
+  }
+  
+  /* Efecto de hover en el botón de guarda */
+  .arancel-container .btn:hover {
+    background-color: #099264;
+  }
+  
+  /* Espaciado del formulario */
+  .arancel-container .form-group {
+    margin-bottom: 15px;
+  }
+  
+  /* Estilo adicional para los campos de formulario solo lectura */
+  .arancel-container .form-group input[readonly] {
+    background-color: #e9ecef;
+  }
+  
+  /* Diseño responsivo */
+  @media (max-width: 768px) {
+    .arancel-container .form-group label,
+    .arancel-container .form-group input {
+      font-size: 14px;
+    }
+  }
+  

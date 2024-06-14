@@ -4,9 +4,9 @@
   padding: 30px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #fff; /* Cambia el color de fondo a celeste */
+  background-color: #fff; /* Cambia el color*/
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  min-height: 800px; /* Ajusta esta altura según sea necesario */
+  min-height: 500px; /* Ajusta esta altura según sea necesario */
 }
 
 .school-image {
@@ -43,7 +43,7 @@
 .inscribir-container input[type="tel"],
 .inscribir-container input[type="date"],
 .inscribir-container select {
-  width: 100%;
+  width: 50%;
   padding: 7px;
   border: 1px solid #ccc;
   border-radius: 5px;
