@@ -12,7 +12,7 @@ export class HomeComponent {
 
   navigateToInscribir() {
     console.log('Botón de inscribir clicado');
-    this.router.navigate(['/inscribir']).then(success => {
+    this.router.navigate(['/inscripcion']).then(success => {
       if (success) {
         console.log('Navegación exitosa');
       } else {

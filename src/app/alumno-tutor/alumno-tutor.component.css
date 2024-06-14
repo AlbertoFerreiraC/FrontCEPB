@@ -1,0 +1,81 @@
+/* Contenedor principal */
+.content-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 60px); /* Altura mínima de la ventana menos la altura del menú-bar */
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto; /* Permite el desplazamiento vertical si el contenido es demasiado grande */
+  margin-top: 60% /* Ajusta esta altura según la altura del menú-bar */
+}
+
+/* Contenedor del formulario */
+.alumno-tutor-container {
+  max-width: 600px;
+  width: 100%;
+  padding: 30px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff; /* Color de fondo */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow-y: auto; /* Permite el desplazamiento interno si es necesario */
+}
+
+/* Estilo de las etiquetas del formulario */
+.alumno-tutor-container label {
+  display: block;
+  font-weight: bold;
+  font-size: 0.8em;
+  color: #000;
+  padding: 4px 9px;
+  border-radius: 2px;
+  margin-bottom: 5px;
+}
+
+/* Estilo de las entradas del formulario */
+.alumno-tutor-container input[type="text"],
+.alumno-tutor-container input[type="email"],
+.alumno-tutor-container input[type="tel"],
+.alumno-tutor-container input[type="date"],
+.alumno-tutor-container select {
+  width: 100%; /* Cambiado a 100% para que los inputs ocupen todo el ancho disponible */
+  padding: 7px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 0.8em;
+}
+
+/* Estilo del botón de envío */
+.alumno-tutor-container button {
+  padding: 9px 18px;
+  border: none;
+  border-radius: 5px;
+  background-color: #00796b;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.8em;
+  margin-top: 10px;
+}
+
+/* Efecto de hover en el botón de envío */
+.alumno-tutor-container button:hover {
+  background-color: #099264;
+}
+
+/* Estilo del botón para agregar tutor */
+.boton-agregar-tutor {
+  margin-bottom: 15px;
+}
+
+/* Ajustes adicionales para el formulario */
+.alumno-tutor-container form {
+  display: grid;
+  grid-gap: 10px;
+}
+
+/* Ajustes para secciones de información */
+.seccion-estudiante, .seccion-tutor {
+  margin-bottom: 20px;
+}

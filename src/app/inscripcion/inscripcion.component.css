@@ -1,0 +1,63 @@
+/* src/app/inscripcion/inscripcion.component.css */
+
+.arancel-container {
+  max-width: 600px;
+  margin: 70% auto 0;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.school-image {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+}
+
+.arancel-container h2 {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+}
+
+.arancel-container form {
+  display: grid;
+  grid-gap: 20px;
+}
+
+.arancel-container .form-group {
+  margin-bottom: 1rem;
+}
+
+.arancel-container .form-group input,
+.arancel-container .form-check-input {
+  width: calc(100% - 16px);
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.arancel-container .form-group input[type="checkbox"] {
+  width: auto;
+}
+
+.arancel-container .btn {
+  background-color: #00796b;
+  border: none;
+  padding: 10px 10px;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.arancel-container .btn:hover {
+  background-color: #099264;
+}
+
+@media (max-width: 768px) {
+  .arancel-container .form-group label,
+  .arancel-container .form-group input {
+    font-size: 14px;
+  }
+}
