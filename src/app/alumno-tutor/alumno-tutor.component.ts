@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataService } from '../data.service'; // Importa el servicio DataService
 
 @Component({
   selector: 'app-alumno-tutor',
@@ -20,7 +21,7 @@ export class AlumnoTutorComponent {
     tutor: null
   };
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private dataService: DataService) {}
 
   toggleMostrarCamposTutor() {
     this.mostrarCamposTutor = !this.mostrarCamposTutor;
@@ -57,6 +58,17 @@ export class AlumnoTutorComponent {
     this.datos.correo = (document.getElementById('correo') as HTMLInputElement).value;
     this.datos.fechaInscripcion = (document.getElementById('fechaInscripcion') as HTMLInputElement).value;
 
-    this.router.navigate(['/ficha'], { queryParams: { datos: JSON.stringify(this.datos) } });
+    // Llamar al servicio DataService para guardar los datos
+    this.dataService.guardarDatos(this.datos).subscribe(
+      response => {
+        console.log('Datos guardados exitosamente:', response);
+        // Redirigir a la página de ficha o a donde sea necesario
+        this.router.navigate(['/ficha'], { queryParams: { datos: JSON.stringify(this.datos) } });
+      },
+      error => {
+        console.error('Error al guardar los datos:', error);
+        // Manejar el error apropiadamente
+      }
+    );
   }
 }
