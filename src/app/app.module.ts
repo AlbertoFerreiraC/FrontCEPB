@@ -10,6 +10,7 @@ import { ArancelComponent } from './arancel/arancel.component';
 import { AlumnoTutorComponent } from './alumno-tutor/alumno-tutor.component';
 import { InscripcionComponent } from './inscripcion/inscripcion.component';
 import { MenuBarComponent } from './menu-bar/menu-bar.component';
+import { AlumnoComponent } from './alumno/alumno.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { MenuBarComponent } from './menu-bar/menu-bar.component';
     ArancelComponent,
     AlumnoTutorComponent,
     InscripcionComponent,
-    MenuBarComponent
+    MenuBarComponent,
+    AlumnoComponent
   ],
   imports: [
     BrowserModule,

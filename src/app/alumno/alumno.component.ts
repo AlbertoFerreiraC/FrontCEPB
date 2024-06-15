@@ -5,8 +5,8 @@ import { Alumno } from '../models/alumno.model';
 
 @Component({
   selector: 'app-alumno',
-  templateUrl: './alumno.component.html',
-  styleUrls: ['./alumno.component.css']
+  templateUrl:'./alumno.component.html',
+  styleUrls:['./alumno.component.css']
 })
 export class AlumnoComponent {
   alumno: Alumno = {
