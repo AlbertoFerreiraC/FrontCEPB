@@ -1,51 +1,48 @@
+<!-- tutor.component.html -->
 <div class="content-container">
-    <div class="alumno-tutor-container">
-      <h2>Agregar Tutor</h2>
-      <form>
-        <!-- Campos de información del tutor -->
-        <div class="seccion-tutor">
-          <h3>Información del Tutor</h3>
-          <div>
-            <label for="nombreTutor">Nombre del Tutor:</label>
-            <input type="text" id="nombreTutor" name="nombreTutor" required>
-          </div>
-          <div>
-            <label for="apellidoTutor">Apellido del Tutor:</label>
-            <input type="text" id="apellidoTutor" name="apellidoTutor" required>
-          </div>
-          <div>
-            <label for="cedulaTutor">Cédula del Tutor:</label>
-            <input type="text" id="cedulaTutor" name="cedulaTutor" required>
-          </div>
-          <div>
-            <label for="telefonoTutor">Teléfono del Tutor:</label>
-            <input type="tel" id="telefonoTutor" name="telefonoTutor" required>
-          </div>
-          <div>
-            <label for="correoTutor">Correo del Tutor:</label>
-            <input type="email" id="correoTutor" name="correoTutor" required>
-          </div>
-          <div>
-            <label for="direccionTutor">Dirección del Tutor:</label>
-            <input type="text" id="direccionTutor" name="direccionTutor" required>
-          </div>
-          <div>
-            <label for="relacionTutor">Relación del Tutor:</label>
-            <select id="relacionTutor" name="relacionTutor" required>
-              <option value="padre">Padre</option>
-              <option value="madre">Madre</option>
-              <option value="encargado">Encargado</option>
-              <option value="otro">Otro</option>
-            </select>
-          </div>
-        </div>
-  
-        <!-- Botones para cancelar y guardar la inscripción -->
-        <div>
-          <button type="button" (click)="cancelar()">Cancelar</button>
-          <button type="submit" (click)="guardarTutor()">Guardar</button>
-        </div>
-      </form>
-    </div>
+  <div class="tutor-form-container">
+    <h2>Agregar Tutor</h2>
+    <form (ngSubmit)="guardarTutor()">
+      <!-- Campos de Tutor -->
+      <div class="form-group">
+        <label for="ci">Cédula de Identidad:</label>
+        <input type="text" id="ci" name="ci" [(ngModel)]="tutor.tut_ci" required>
+      </div>
+
+      <div class="form-group">
+        <label for="tipo">Tipo de Tutor:</label>
+        <input type="text" id="tipo" name="tipo" [(ngModel)]="tutor.tut_tipo">
+      </div>
+
+      <div class="form-group">
+        <label for="nombre">Nombre del Tutor:</label>
+        <input type="text" id="nombre" name="nombre" [(ngModel)]="tutor.tut_nom" required>
+      </div>
+
+      <div class="form-group">
+        <label for="apellido">Apellido del Tutor:</label>
+        <input type="text" id="apellido" name="apellido" [(ngModel)]="tutor.tut_ape" required>
+      </div>
+
+      <div class="form-group">
+        <label for="telefono">Teléfono del Tutor:</label>
+        <input type="text" id="telefono" name="telefono" [(ngModel)]="tutor.tut_tel">
+      </div>
+
+      <div class="form-group">
+        <label for="direccion">Dirección del Tutor:</label>
+        <input type="text" id="direccion" name="direccion" [(ngModel)]="tutor.tut_direc">
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email del Tutor:</label>
+        <input type="email" id="email" name="email" [(ngModel)]="tutor.tut_mail">
+      </div>
+
+      <div class="form-group">
+        <button type="button" (click)="cancelar()">Cancelar</button>
+        <button type="submit">Guardar</button>
+      </div>
+    </form>
   </div>
-  
+</div>
