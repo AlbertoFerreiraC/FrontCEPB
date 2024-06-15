@@ -12,8 +12,7 @@ export class DataService {
   private apiUrl = 'http://127.0.0.1:8000';
 
   constructor(private http: HttpClient) { }
-
-  // Método para obtener la lista de alumnos
+  
   getAlumnos(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/alumnos/`).pipe(
       catchError(this.handleError)
