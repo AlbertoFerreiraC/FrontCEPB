@@ -3,10 +3,13 @@
 <div class="arancel-container">
   <h2>Formulario de Inscripción</h2>
   <form (ngSubmit)="guardar()">
+    <!-- Campo para seleccionar estudiante -->
     <div class="form-group">
       <label for="nombre">Nombre:</label>
       <input type="text" class="form-control" id="nombre" [(ngModel)]="estudiante.nombre" name="nombre" required>
     </div>
+
+    <!-- Campos para otros datos del estudiante -->
     <div class="form-group">
       <label for="apellido">Apellido:</label>
       <input type="text" class="form-control" id="apellido" [(ngModel)]="estudiante.apellido" name="apellido" required>
@@ -20,11 +23,7 @@
       <input type="date" class="form-control" id="fechaNacimiento" [(ngModel)]="estudiante.fechaNacimiento" name="fechaNacimiento" required>
     </div>
 
-    <!-- Relación Alumno-Tutor -->
-    <div class="form-group">
-      <label for="relacionAlumnoTutor">Relación Alumno-Tutor:</label>
-      <input type="text" class="form-control" id="relacionAlumnoTutor" [(ngModel)]="estudiante.relacionAlumnoTutor" name="relacionAlumnoTutor" required>
-    </div>
+    <!-- Otros campos según necesites -->
 
     <!-- Fecha de Inscripción -->
     <div class="form-group">
@@ -44,10 +43,10 @@
       <input type="text" class="form-control" id="periodo" value="2024" readonly>
     </div>
 
-   <!-- Botones para cancelar y guardar la inscripción -->
-   <div class="d-flex justify-content-between">
-    <button type="button" class="btn btn-secondary cancel-button" (click)="cancelar()">Cancelar</button>
-    <button type="submit" class="btn btn-primary">Guardar</button>
-  </div>
-</form>
+    <!-- Botones para cancelar y guardar la inscripción -->
+    <div class="d-flex justify-content-between">
+      <button type="button" class="btn btn-secondary cancel-button" (click)="cancelar()">Cancelar</button>
+      <button type="submit" class="btn btn-primary">Guardar</button>
+    </div>
+  </form>
 </div>
