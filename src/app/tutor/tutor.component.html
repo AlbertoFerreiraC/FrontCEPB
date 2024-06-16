@@ -5,16 +5,6 @@
     <form (ngSubmit)="guardarTutor()">
       <!-- Campos de Tutor -->
       <div class="form-group">
-        <label for="ci">Cédula de Identidad:</label>
-        <input type="text" id="ci" name="ci" [(ngModel)]="tutor.tut_ci" required>
-      </div>
-
-      <div class="form-group">
-        <label for="tipo">Tipo de Tutor:</label>
-        <input type="text" id="tipo" name="tipo" [(ngModel)]="tutor.tut_tipo">
-      </div>
-
-      <div class="form-group">
         <label for="nombre">Nombre del Tutor:</label>
         <input type="text" id="nombre" name="nombre" [(ngModel)]="tutor.tut_nom" required>
       </div>
@@ -25,8 +15,18 @@
       </div>
 
       <div class="form-group">
+        <label for="ci">Cédula de Identidad:</label>
+        <input type="text" id="ci" name="ci" [(ngModel)]="tutor.tut_ci" required>
+      </div>
+
+      <div class="form-group">
         <label for="telefono">Teléfono del Tutor:</label>
         <input type="text" id="telefono" name="telefono" [(ngModel)]="tutor.tut_tel">
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email del Tutor:</label>
+        <input type="email" id="email" name="email" [(ngModel)]="tutor.tut_mail">
       </div>
 
       <div class="form-group">
@@ -35,8 +35,14 @@
       </div>
 
       <div class="form-group">
-        <label for="email">Email del Tutor:</label>
-        <input type="email" id="email" name="email" [(ngModel)]="tutor.tut_mail">
+        <label for="tipo">Tipo de Tutor:</label>
+        <select id="tipo" name="tipo" [(ngModel)]="tutor.tut_tipo" required>
+          <option value="" disabled selected>Seleccione el tipo de tutor</option>
+          <option value="Padre">Padre</option>
+          <option value="Madre">Madre</option>
+          <option value="Tutor Legal">Encargado</option>
+          <option value="Otro">Otro</option>
+        </select>
       </div>
 
       <div class="form-group">
