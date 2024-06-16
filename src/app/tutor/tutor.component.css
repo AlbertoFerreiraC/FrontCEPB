@@ -10,7 +10,7 @@
 .tutor-form-container {
     background-color: #fff;
     padding: 8px; /* Reducir el padding para disminuir la altura total */
-    border-radius: 8px;
+    border-radius: 3px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 400px;
 }
@@ -18,11 +18,7 @@
 h2 {
     text-align: center;
     color: #333;
-    margin-bottom: 12px; /* Reducir el margen inferior */
-}
-
-.form-group {
-    margin-bottom: 12px; /* Reducir el margen inferior */
+    margin-bottom: 8px; /* Reducir el margen inferior */
 }
 
 label {
@@ -58,7 +54,7 @@ select {
 
 button {
     width: 48%;
-    padding: 10px; /* Reducir el padding */
+    padding: 7px; /* Reducir el padding */
     border: none;
     border-radius: 6px;
     cursor: pointer;
@@ -89,7 +85,7 @@ button[type="submit"]:hover {
     .tutor-form-container {
         width: 90%;
         max-width: 100%; /* Asegura que no exceda el ancho del contenedor padre */
-        padding: 16px;
+        padding: 8px;
     }
 
     button[type="button"],

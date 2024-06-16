@@ -1,36 +1,38 @@
+
 /* Contenedor principal */
 .content-container {
+  position: absolute; /* Permite que el contenedor ocupe el tamaño del padre */
+  top: 0;
+  left: 0;
+  width: 100%; /* Ocupa todo el ancho disponible */
+  height: 100%; /* Ocupa toda la altura disponible */
+  background-color: #e0f7fa;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: calc(100vh - 60px); /* Altura mínima de la ventana menos la altura del menú-bar */
-  padding: 20px;
-  box-sizing: border-box;
-  overflow-y: auto; /* Permite el desplazamiento vertical si el contenido es demasiado grande */
-  margin-top: 60% /* Ajusta esta altura según la altura del menú-bar */
+  z-index: -1; /* Asegura que esté detrás del contenido */
 }
 
 /* Contenedor del formulario */
 .alumno-tutor-container {
-  max-width: 600px;
-  width: 100%;
-  padding: 30px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #fff; /* Color de fondo */
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow-y: auto; /* Permite el desplazamiento interno si es necesario */
+  width: 400px;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
 }
 
 /* Estilo de las etiquetas del formulario */
-.alumno-tutor-container label {
+.label {
   display: block;
-  font-weight: bold;
-  font-size: 0.8em;
-  color: #000;
-  padding: 4px 9px;
-  border-radius: 2px;
   margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
 }
 
 /* Estilo de las entradas del formulario */
@@ -39,7 +41,7 @@
 .alumno-tutor-container input[type="tel"],
 .alumno-tutor-container input[type="date"],
 .alumno-tutor-container select {
-  width: 100%; /* Cambiado a 100% para que los inputs ocupen todo el ancho disponible */
+  width: 100%;
   padding: 7px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -76,6 +78,7 @@
 }
 
 /* Ajustes para secciones de información */
-.seccion-estudiante, .seccion-tutor {
+.seccion-estudiante,
+.seccion-tutor {
   margin-bottom: 20px;
 }
