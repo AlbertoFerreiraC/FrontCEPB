@@ -1,31 +1,28 @@
-/* src/app/tutor/tutor.component.css */
-
 .content-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 50vh;
     background-color: #f5f5f5;
     font-family: Arial, sans-serif;
 }
 
 .tutor-form-container {
-    background-color: #ffffff;
-    padding: 20px;
+    background-color: #fff;
+    padding: 8px; /* Reducir el padding para disminuir la altura total */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 280%; /* Reducido en un 30% */
-    max-width: 90%;
+    width: 400px;
 }
 
 h2 {
     text-align: center;
     color: #333;
-    margin-bottom: 16px;
+    margin-bottom: 12px; /* Reducir el margen inferior */
 }
 
 .form-group {
-    margin-bottom: 16px;
+    margin-bottom: 12px; /* Reducir el margen inferior */
 }
 
 label {
@@ -40,7 +37,7 @@ input[type="tel"],
 input[type="email"],
 select {
     width: 100%;
-    padding: 10px;
+    padding: 5px; /* Reducir el padding */
     border: 1px solid #ccc;
     border-radius: 6px;
     box-sizing: border-box;
@@ -60,8 +57,8 @@ select {
 }
 
 button {
-    width: 100%;
-    padding: 12px;
+    width: 48%;
+    padding: 10px; /* Reducir el padding */
     border: none;
     border-radius: 6px;
     cursor: pointer;
@@ -72,25 +69,26 @@ button {
 button[type="button"] {
     background-color: #00796b;
     color: #fff;
-    margin-right: 8px;
+    margin-right: 4%;
 }
 
 button[type="button"]:hover {
-    background-color: #005a4c;
+    background-color: #099264;
 }
 
 button[type="submit"] {
-    background-color: #4caf50;
+    background-color: #00796b;
     color: #fff;
 }
 
 button[type="submit"]:hover {
-    background-color: #388e3c;
+    background-color: #099264;
 }
 
 @media (max-width: 500px) {
     .tutor-form-container {
-        width: 100%;
+        width: 90%;
+        max-width: 100%; /* Asegura que no exceda el ancho del contenedor padre */
         padding: 16px;
     }
 
