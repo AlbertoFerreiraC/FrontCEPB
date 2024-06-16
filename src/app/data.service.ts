@@ -55,20 +55,20 @@ export class DataService {
     );
   }
 
-  // Método para guardar la relación Alumno-Tutor en el backend
-  guardarRelacionAlumnoTutor(alumnoId: number, tutorId: number): Observable<any> {
-    const url = `${this.apiUrl}/tutores/tutoralumno/`; // URL según tu configuración
-    const body = { alumno: alumnoId, tutor: tutorId };
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    };
+ // Método para guardar la relación Alumno-Tutor en el backend
+ guardarRelacionAlumnoTutor(alumnoId: number, tutorId: number): Observable<any> {
+  const url = `${this.apiUrl}/tutores/alumnos/`; // Ajusta la URL según tu configuración
+  const body = { alumno: alumnoId, tutor: tutorId };
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
 
-    return this.http.post<any>(url, body, httpOptions).pipe(
-      catchError(this.handleError)
-    );
-  }
+  return this.http.post<any>(url, body, httpOptions).pipe(
+    catchError(this.handleError)
+  );
+}
 
    // Método para obtener la lista de tutores desde el backend
    getRelacionesTutorAlumno(): Observable<any[]> {
