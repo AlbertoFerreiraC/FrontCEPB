@@ -1,38 +1,18 @@
-<!-- src/app/inscripcion/inscripcion.component.html -->
+<form (ngSubmit)="guardar()">
+  <div *ngIf="relaciones.length > 0">
+    <label>Seleccione una relación Tutor-Alumno:</label>
+    <select [(ngModel)]="relacionSeleccionada" name="relacion">
+      <option *ngFor="let relacion of relaciones" [ngValue]="relacion">
+        {{ relacion.nombreCompleto }}
+      </option>
+    </select>
+  </div>
 
-<div class="arancel-container">
-  <h2>Formulario de Inscripción</h2>
-  <form (ngSubmit)="guardar()">
-    <!-- Selector para la relación Tutor-Alumno -->
-    <div class="form-group custom-select">
-      <label for="relacionTutorAlumno">Tutor-Alumno:</label>
-      <select id="relacionTutorAlumno" name="relacionTutorAlumno" [(ngModel)]="relacionSeleccionada" required>
-        <option *ngFor="let relacion of relaciones" [value]="relacion.id">{{ relacion.nombreCompleto }}</option>
-      </select>
-    </div>
+  <label>Fecha de Inscripción:</label>
+  <input type="date" [(ngModel)]="fechaInscripcion" name="fechaInscripcion">
 
-    <!-- Checkbox de Habilitado/No Habilitado -->
-    <div class="form-check">
-      <input type="checkbox" class="form-check-input" id="habilitado" name="habilitado" [(ngModel)]="habilitado">
-      <label class="form-check-label" for="habilitado">Habilitado</label>
-    </div>
+  <label>Habilitado:</label>
+  <input type="checkbox" [(ngModel)]="habilitado" name="habilitado">
 
-    <!-- Campo para la fecha de inscripción -->
-    <div class="form-group">
-      <label for="fechaInscripcion">Fecha de Inscripción:</label>
-      <input type="date" class="form-control" id="fechaInscripcion" name="fechaInscripcion" [(ngModel)]="fechaInscripcion" required>
-    </div>
-
-    <!-- Campo fijo para el período -->
-    <div class="form-group">
-      <label for="periodo">Período:</label>
-      <input type="text" class="form-control" id="periodo" value="2024" readonly>
-    </div>
-
-    <!-- Botones para cancelar y guardar la inscripción -->
-    <div class="d-flex justify-content-between">
-      <button type="button" class="btn btn-secondary cancel-button" (click)="cancelar()">Cancelar</button>
-      <button type="submit" class="btn btn-primary">Guardar</button>
-    </div>
-  </form>
-</div>
+  <button type="submit">Guardar Inscripción</button>
+</form>

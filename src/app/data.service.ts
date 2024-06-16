@@ -2,8 +2,8 @@
 
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { Observable, throwError, forkJoin } from 'rxjs';
+import { catchError,  mergeMap, map  } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +27,12 @@ export class DataService {
     );
   }
 
+  getTutorAlumno(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/tutores/alumnos/`).pipe(
+      catchError(this.handleError)
+    );
+  }
+  
   // Método para guardar un nuevo alumno en el backend
   guardarAlumno(alumno: any): Observable<any> {
     const url = `${this.apiUrl}/alumnos/`;
@@ -56,17 +62,26 @@ export class DataService {
   }
 
  // Método para guardar la relación Alumno-Tutor en el backend
- guardarRelacionAlumnoTutor(alumnoId: number, tutorId: number): Observable<any> {
-  const url = `${this.apiUrl}/tutores/alumnos/`; // Ajusta la URL según tu configuración
-  const body = { alumno: alumnoId, tutor: tutorId };
-  const httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-    })
-  };
+ guardarRelacionAlumnoTutor(data: any): Observable<any> {
+    const url = `${this.apiUrl}/tutores/alumnos/`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
 
-  return this.http.post<any>(url, body, httpOptions).pipe(
-    catchError(this.handleError)
+    return this.http.post<any>(url, data, httpOptions).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+// Método para crear una inscripción en el backend
+crearInscripcion(data: any): Observable<any> {
+  const url = `${this.apiUrl}/create/`; // Asegúrate de que coincida con tu URL en Django
+  return this.http.post<any>(url, data).pipe(
+    catchError((error: any) => {
+      throw error;  // Propaga el error hacia arriba
+    })
   );
 }
 
@@ -86,11 +101,13 @@ export class DataService {
   // Método de manejo de errores genérico
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
+      // Error del lado del cliente
       console.error('Error del lado del cliente:', error.error.message);
     } else {
+      // Error del lado del servidor
       console.error(
         `Error del lado del servidor ${error.status}, ` +
-        `mensaje: ${error.error}`
+        `mensaje: ${JSON.stringify(error.error)}`
       );
     }
     return throwError('Ocurrió un error. Por favor, intenta nuevamente.');

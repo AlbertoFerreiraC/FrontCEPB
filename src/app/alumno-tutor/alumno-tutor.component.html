@@ -6,16 +6,20 @@
     <!-- Selector de Alumno -->
     <div class="form-group">
       <label for="alumno">Seleccionar Alumno:</label>
-      <select id="alumno" name="alumno" [(ngModel)]="alumnoSeleccionado" required>
-        <option *ngFor="let alumno of alumnos" [value]="alumno.alum_id">{{ alumno.alum_ci }}: {{ alumno.alum_nom }} {{ alumno.alum_ape }}</option>
+      <select [(ngModel)]="alumnoSeleccionado">
+        <option *ngFor="let alumno of alumnos" [ngValue]="alumno">
+          {{ alumno.alum_ci }}: {{ alumno.alum_nom }} {{ alumno.alum_ape }}
+        </option>
       </select>
     </div>
 
     <!-- Selector de Tutor -->
     <div class="form-group">
       <label for="tutor">Seleccionar Tutor:</label>
-      <select id="tutor" name="tutor" [(ngModel)]="tutorSeleccionado" required>
-        <option *ngFor="let tutor of tutores" [value]="tutor.tut_id">{{ tutor.tut_ci }}: {{ tutor.tut_nom }} {{ tutor.tut_ape }}</option>
+      <select [(ngModel)]="tutorSeleccionado">
+        <option *ngFor="let tutor of tutores" [ngValue]="tutor">
+          {{ tutor.tut_ci }}: {{ tutor.tut_nom }} {{ tutor.tut_ape }}
+        </option>
       </select>
     </div>
 

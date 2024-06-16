@@ -1,8 +1,5 @@
-// src/app/inscripcion/inscripcion.component.ts
-
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../data.service'; // Ajusta la ruta según la ubicación de tu servicio de datos
-import { Tutor } from '../models/tutor.model'; // Asegúrate de importar correctamente tu interfaz Tutor
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-inscripcion',
@@ -10,27 +7,26 @@ import { Tutor } from '../models/tutor.model'; // Asegúrate de importar correct
   styleUrls: ['./inscripcion.component.css']
 })
 export class InscripcionComponent implements OnInit {
+  relaciones: any[] = [];
+  relacionSeleccionada: any = null; // Inicializar como null
 
-  relaciones: any[] = []; // Arreglo para almacenar las relaciones Tutor-Alumno obtenidas del servicio
-  relacionSeleccionada: number = 0; // Variable para almacenar el ID de la relación seleccionada
-  habilitado: boolean = false; // Variable para almacenar el estado del checkbox
-  fechaInscripcion: string = ''; // Variable para almacenar la fecha de inscripción
+  habilitado: boolean = false;
+  fechaInscripcion: string = '';
 
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    // Método que se ejecuta al inicializarse el componente
     this.cargarRelacionesTutorAlumno();
   }
 
   cargarRelacionesTutorAlumno(): void {
-    // Método para obtener la lista de relaciones Tutor-Alumno desde el servicio
-    this.dataService.getRelacionesTutorAlumno().subscribe(
+    this.dataService.getTutorAlumno().subscribe(
       (relaciones: any[]) => {
-        // Formatear las relaciones para mostrar nombreTutor-apellidoTutor / nombreAlumno-apellidoAlumno
         this.relaciones = relaciones.map(relacion => ({
-          id: relacion.id, // Mantener el ID para el valor del selector
-          nombreCompleto: `${relacion.tutor.tut_nom}-${relacion.tutor.tut_ape} / ${relacion.alumno.alu_nom}-${relacion.alumno.alu_ape}`
+          id: relacion.id,
+          tutorId: relacion.tutor.tut_id,
+          alumnoId: relacion.alumno.alum_id,
+          nombreCompleto: `${relacion.tutor.tut_nom} ${relacion.tutor.tut_ape} / ${relacion.alumno.alum_nom} ${relacion.alumno.alum_ape}`
         }));
       },
       (error) => {
@@ -40,15 +36,41 @@ export class InscripcionComponent implements OnInit {
   }
 
   cancelar(): void {
-    // Función para cancelar, puedes redirigir a otra página o realizar otra acción necesaria
     console.log('Cancelar acción');
   }
 
   guardar(): void {
-    // Función para guardar la inscripción
+    if (!this.relacionSeleccionada || !this.relacionSeleccionada.alumnoId || !this.relacionSeleccionada.tutorId) {
+      console.error('No se ha seleccionado una relación Tutor-Alumno válida.');
+      return;
+    }
+  
     console.log('Relación Tutor-Alumno seleccionada:', this.relacionSeleccionada);
     console.log('Habilitado:', this.habilitado);
     console.log('Fecha de Inscripción:', this.fechaInscripcion);
-    // Aquí puedes implementar la lógica para guardar la inscripción en la base de datos
+  
+    const data: any = {
+      alumno: this.relacionSeleccionada.alumnoId,
+      tutor: this.relacionSeleccionada.tutorId,
+      ins_contrato_fecha: this.fechaInscripcion,
+      ins_periodo: '2024',  // Ajusta cómo obtienes el período en tu aplicación
+      // Otros datos que necesites enviar
+    };
+  
+    console.log('Datos a enviar:', data);
+  
+    this.dataService.crearInscripcion(data).subscribe(
+      (response) => {
+        console.log('Inscripción creada correctamente:', response);
+        // Actualizar cualquier estado o redirigir después de guardar exitosamente
+      },
+      (error) => {
+        console.error('Error al crear la inscripción:', error);
+        if (error.error && typeof error.error === 'object' && error.error.detail) {
+          console.error('Detalles del error:', error.error.detail);
+        }
+      }
+    );
   }
+  
 }

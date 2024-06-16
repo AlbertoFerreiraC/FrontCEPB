@@ -1,9 +1,8 @@
-// alumno-tutor.component.ts
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { DataService } from '../data.service'; // Ajusta la ruta según la ubicación de tu servicio de datos
-import { Alumno } from '../models/alumno.model'; // Ajusta la ruta según la ubicación de tu modelo Alumno
-import { Tutor } from '../models/tutor.model'; // Ajusta la ruta según la ubicación de tu modelo Tutor
+import { DataService } from '../data.service';
+import { Alumno } from '../models/alumno.model';
+import { Tutor } from '../models/tutor.model';
 
 @Component({
   selector: 'app-alumno-tutor',
@@ -12,21 +11,19 @@ import { Tutor } from '../models/tutor.model'; // Ajusta la ruta según la ubica
 })
 export class AlumnoTutorComponent implements OnInit {
 
-  alumnos: Alumno[] = []; // Arreglo para almacenar los alumnos obtenidos de la base de datos
-  tutores: Tutor[] = []; // Arreglo para almacenar los tutores obtenidos de la base de datos
-  alumnoSeleccionado: number = 0; // Variable para almacenar el ID del alumno seleccionado
-  tutorSeleccionado: number = 0; // Variable para almacenar el ID del tutor seleccionado
+  alumnos: Alumno[] = [];
+  tutores: Tutor[] = [];
+  alumnoSeleccionado: Alumno | null = null;
+  tutorSeleccionado: Tutor | null = null;
 
   constructor(private router: Router, private dataService: DataService) {}
 
   ngOnInit(): void {
-    // Método que se ejecuta al inicializarse el componente
     this.cargarAlumnos();
     this.cargarTutores();
   }
 
   cargarAlumnos(): void {
-    // Método para obtener la lista de alumnos desde el servicio
     this.dataService.getAlumnos().subscribe(
       (alumnos: Alumno[]) => {
         this.alumnos = alumnos;
@@ -38,7 +35,6 @@ export class AlumnoTutorComponent implements OnInit {
   }
 
   cargarTutores(): void {
-    // Método para obtener la lista de tutores desde el servicio
     this.dataService.getTutores().subscribe(
       (tutores: Tutor[]) => {
         this.tutores = tutores;
@@ -50,25 +46,48 @@ export class AlumnoTutorComponent implements OnInit {
   }
 
   cancelar(): void {
-    // Función para cancelar, puedes redirigir a otra página o realizar otra acción necesaria
     console.log('Cancelar acción');
   }
 
   guardar(): void {
-    // Función para guardar, aquí puedes redirigir según el alumno y tutor seleccionados
-    console.log('Alumno seleccionado:', this.alumnoSeleccionado);
-    console.log('Tutor seleccionado:', this.tutorSeleccionado);
+    if (this.alumnoSeleccionado && this.tutorSeleccionado) {
+      const data = {
+        alumno: {
+          alum_id: this.alumnoSeleccionado.alum_id,
+          alum_ci: this.alumnoSeleccionado.alum_ci,
+          alum_nom: this.alumnoSeleccionado.alum_nom,
+          alum_ape: this.alumnoSeleccionado.alum_ape,
+          alum_fecha_nac: this.alumnoSeleccionado.alum_fecha_nac,
+          alum_edad: this.alumnoSeleccionado.alum_edad
+        },
+        tutor: {
+          tut_id: this.tutorSeleccionado.tut_id,
+          tut_ci: this.tutorSeleccionado.tut_ci,
+          tut_tipo: this.tutorSeleccionado.tut_tipo,
+          tut_nom: this.tutorSeleccionado.tut_nom,
+          tut_ape: this.tutorSeleccionado.tut_ape,
+          tut_tel: this.tutorSeleccionado.tut_tel,
+          tut_direc: this.tutorSeleccionado.tut_direc,
+          tut_mail: this.tutorSeleccionado.tut_mail
+        }
+      };
 
-    // Llamar al servicio para guardar la relación alumno-tutor en la base de datos
-    this.dataService.guardarRelacionAlumnoTutor(this.alumnoSeleccionado, this.tutorSeleccionado).subscribe(
-      (respuesta) => {
-        console.log('Relación alumno-tutor guardada exitosamente:', respuesta);
-        // Aquí podrías redirigir a otra página o mostrar un mensaje de éxito
-      },
-      (error) => {
-        console.error('Error al guardar la relación alumno-tutor:', error);
-        // Aquí podrías mostrar un mensaje de error al usuario
-      }
-    );
+      // Registrar el cuerpo de la solicitud en la consola
+      console.log('Body de la solicitud:', JSON.stringify(data));
+
+      // Llamar al servicio para guardar la relación alumno-tutor en la base de datos
+      this.dataService.guardarRelacionAlumnoTutor(data).subscribe(
+        (respuesta) => {
+          console.log('Relación alumno-tutor guardada exitosamente:', respuesta);
+          // Aquí podrías redirigir a otra página o mostrar un mensaje de éxito
+        },
+        (error) => {
+          console.error('Error al guardar la relación alumno-tutor:', error);
+          // Aquí podrías mostrar un mensaje de error al usuario
+        }
+      );
+    } else {
+      console.error('Alumno o tutor no seleccionados.');
+    }
   }
 }
