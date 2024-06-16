@@ -3,32 +3,72 @@
   <h2>Aranceles</h2>
   <form (ngSubmit)="guardar()">
     <div class="form-group">
+      <label for="inscripcion">Inscripción</label>
+      <select id="inscripcion" [(ngModel)]="arancel.inscripcion_id" name="inscripcion" required>
+        <option *ngFor="let inscripcion of inscripciones" [value]="inscripcion.id">{{ inscripcion.nombre }}</option>
+      </select>
+    </div>
+    <div class="form-group">
       <label for="nivel">Nivel</label>
-      <input type="text" id="nivel" [(ngModel)]="arancel.nivel" name="nivel" required>
+      <select id="nivel" [(ngModel)]="arancel.arancel_nivel" name="nivel" required>
+        <option value="Escolar Básica">Escolar Básica</option>
+        <option value="Nivel Inicial">Nivel Inicial</option>
+        <option value="Educación Media">Educación Media</option>
+      </select>
     </div>
     <div class="form-group">
       <label for="ciclo">Ciclo</label>
-      <input type="text" id="ciclo" [(ngModel)]="arancel.ciclo" name="ciclo" required>
+      <select id="ciclo" [(ngModel)]="arancel.arancel_ciclo" name="ciclo" required>
+        <option value="Preescolar">Preescolar</option>
+        <option value="1º">1º</option>
+        <option value="2º">2º</option>
+        <option value="3º">3º</option>
+        <option value="Bachillerato">Bachillerato</option>
+      </select>
     </div>
     <div class="form-group">
       <label for="especializacion">Especialización</label>
-      <input type="text" id="especializacion" [(ngModel)]="arancel.especializacion" name="especializacion" required>
+      <select id="especializacion" [(ngModel)]="arancel.arancel_especializacion" name="especializacion" required>
+        <option value="BTI">BTI</option>
+        <option value="BTA">BTA</option>
+        <option value="Ciencias Sociales">Ciencias Sociales</option>
+        <option value="Ciencias Básicas">Ciencias Básicas</option>
+      </select>
     </div>
     <div class="form-group">
       <label for="grado">Grado</label>
-      <input type="text" id="grado" [(ngModel)]="arancel.grado" name="grado" required>
+      <select id="grado" [(ngModel)]="arancel.arancel_grado" name="grado" required>
+        <option value="Pre Jardín">Pre Jardín</option>
+        <option value="Jardín">Jardín</option>
+        <option value="Preescolar">Preescolar</option>
+        <option value="1º">1º</option>
+        <option value="2º">2º</option>
+        <option value="3º">3º</option>
+        <option value="4º">4º</option>
+        <option value="5º">5º</option>
+        <option value="6º">6º</option>
+        <option value="7º">7º</option>
+        <option value="8º">8º</option>
+        <option value="9º">9º</option>
+        <option value="1º Bachillerato">1º Bachillerato</option>
+        <option value="2º Bachillerato">2º Bachillerato</option>
+        <option value="3º Bachillerato">3º Bachillerato</option>
+      </select>
     </div>
     <div class="form-group">
       <label for="turno">Turno</label>
-      <input type="text" id="turno" [(ngModel)]="arancel.turno" name="turno" required>
+      <select id="turno" [(ngModel)]="arancel.arancel_turno" name="turno" required>
+        <option value="Mañana">Mañana</option>
+        <option value="Tarde">Tarde</option>
+      </select>
     </div>
     <div class="form-group">
       <label for="matricula">Matrícula</label>
-      <input type="number" id="matricula" [(ngModel)]="arancel.matricula" name="matricula" readonly>
+      <input type="number" id="matricula" [(ngModel)]="arancel.arancel_matricula" name="matricula" readonly>
     </div>
     <div class="form-group">
       <label for="cuota">Cuota</label>
-      <input type="number" id="cuota" [(ngModel)]="arancel.cuota" name="cuota" required>
+      <input type="number" id="cuota" [(ngModel)]="arancel.arancel_cuota" name="cuota" required>
     </div>
     <button type="submit" class="btn">Guardar</button>
   </form>

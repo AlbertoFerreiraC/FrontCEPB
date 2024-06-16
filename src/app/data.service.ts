@@ -77,6 +77,12 @@ export class DataService {
     );
   }
 
+  getInscripciones(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/inscripciones/create/`).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   // Método de manejo de errores genérico
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
