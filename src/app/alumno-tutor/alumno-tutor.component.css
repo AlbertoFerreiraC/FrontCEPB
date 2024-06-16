@@ -24,9 +24,9 @@
 
 h2 {
   text-align: center;
-  color: #333;
+  color: #333333;
+  margin-bottom: 10px;
 }
-
 /* Estilo de las etiquetas del formulario */
 .label {
   display: block;
