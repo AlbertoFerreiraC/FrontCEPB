@@ -43,7 +43,8 @@ export class DataService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
-      })
+      }),
+      body: JSON.stringify(tutor)
     };
 
     return this.http.post<any>(url, tutor, httpOptions).pipe(

@@ -41,13 +41,10 @@
       </div>
 
       <!-- Botón para agregar tutor -->
-      <div class="boton-agregar-tutor">
-        <button type="button" (click)="toggleMostrarCamposTutor()">Agregar Tutor</button>
-      </div>
+      
 
       <!-- Campos de información del tutor (mostrados si mostrarCamposTutor es true) -->
-      <div *ngIf="mostrarCamposTutor" class="seccion-tutor">
-
+      
     <h2>Agregar Tutor</h2>
         <h3>Información del Tutor</h3>
         <div>
@@ -83,13 +80,8 @@
             <option value="otro">Otro</option>
           </select>
         </div>
-      </div>
-
       <!-- Botones para cancelar y guardar la inscripción -->
       <div>
         <button type="button" (click)="cancelar()">Cancelar</button>
         <button type="submit" (click)="guardar()">Guardar</button>
       </div>
-    </form>
-  </div>
-</div>
