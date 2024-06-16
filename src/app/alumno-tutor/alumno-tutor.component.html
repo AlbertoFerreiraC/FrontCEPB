@@ -1,87 +1,28 @@
-<!-- src/app/alumno-tutor/alumno-tutor.component.html -->
+<!-- alumno-tutor.component.html -->
 <div class="content-container">
   <div class="alumno-tutor-container">
-    <h2>Agregar Alumno</h2>
-    <form>
-      <!-- Campos de información del estudiante -->
-      <div class="seccion-estudiante">
-        <h3>Información del Estudiante</h3>
-        <div>
-          <label for="nombre">Nombre:</label>
-          <input type="text" id="nombre" name="nombre" required>
-        </div>
-        <div>
-          <label for="apellido">Apellido:</label>
-          <input type="text" id="apellido" name="apellido" required>
-        </div>
-        <div>
-          <label for="cedula">Cédula:</label>
-          <input type="text" id="cedula" name="cedula" required>
-        </div>
-        <div>
-          <label for="fechaNacimiento">Fecha de Nacimiento:</label>
-          <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
-        </div>
-        <div>
-          <label for="direccion">Dirección:</label>
-          <input type="text" id="direccion" name="direccion" required>
-        </div>
-        <div>
-          <label for="telefono">Teléfono:</label>
-          <input type="tel" id="telefono" name="telefono" required>
-        </div>
-        <div>
-          <label for="correo">Correo:</label>
-          <input type="email" id="correo" name="correo" required>
-        </div>
-        <div>
-          <label for="fechaInscripcion">Fecha de Inscripción:</label>
-          <input type="date" id="fechaInscripcion" name="fechaInscripcion" required>
-        </div>
-      </div>
+    <h2>Seleccionar Alumno y Tutor</h2>
 
-      <!-- Botón para agregar tutor -->
-      
+    <!-- Selector de Alumno -->
+    <div class="form-group">
+      <label for="alumno">Seleccionar Alumno:</label>
+      <select id="alumno" name="alumno" [(ngModel)]="alumnoSeleccionado" required>
+        <option *ngFor="let alumno of alumnos" [value]="alumno.alum_id">{{ alumno.alum_ci }}: {{ alumno.alum_nom }} {{ alumno.alum_ape }}</option>
+      </select>
+    </div>
 
-      <!-- Campos de información del tutor (mostrados si mostrarCamposTutor es true) -->
-      
-    <h2>Agregar Tutor</h2>
-        <h3>Información del Tutor</h3>
-        <div>
-          <label for="nombreTutor">Nombre del Tutor:</label>
-          <input type="text" id="nombreTutor" name="nombreTutor" required>
-        </div>
-        <div>
-          <label for="apellidoTutor">Apellido del Tutor:</label>
-          <input type="text" id="apellidoTutor" name="apellidoTutor" required>
-        </div>
-        <div>
-          <label for="cedulaTutor">Cédula del Tutor:</label>
-          <input type="text" id="cedulaTutor" name="cedulaTutor" required>
-        </div>
-        <div>
-          <label for="telefonoTutor">Teléfono del Tutor:</label>
-          <input type="tel" id="telefonoTutor" name="telefonoTutor" required>
-        </div>
-        <div>
-          <label for="correoTutor">Correo del Tutor:</label>
-          <input type="email" id="correoTutor" name="correoTutor" required>
-        </div>
-        <div>
-          <label for="direccionTutor">Dirección del Tutor:</label>
-          <input type="text" id="direccionTutor" name="direccionTutor" required>
-        </div>
-        <div>
-          <label for="relacionTutor">Relación del Tutor:</label>
-          <select id="relacionTutor" name="relacionTutor" required>
-            <option value="padre">Padre</option>
-            <option value="madre">Madre</option>
-            <option value="encargado">Encargado</option>
-            <option value="otro">Otro</option>
-          </select>
-        </div>
-      <!-- Botones para cancelar y guardar la inscripción -->
-      <div>
-        <button type="button" (click)="cancelar()">Cancelar</button>
-        <button type="submit" (click)="guardar()">Guardar</button>
-      </div>
+    <!-- Selector de Tutor -->
+    <div class="form-group">
+      <label for="tutor">Seleccionar Tutor:</label>
+      <select id="tutor" name="tutor" [(ngModel)]="tutorSeleccionado" required>
+        <option *ngFor="let tutor of tutores" [value]="tutor.tut_id">{{ tutor.tut_ci }}: {{ tutor.tut_nom }} {{ tutor.tut_ape }}</option>
+      </select>
+    </div>
+
+    <!-- Botones para cancelar y guardar -->
+    <div class="form-group">
+      <button type="button" (click)="cancelar()">Cancelar</button>
+      <button type="button" (click)="guardar()">Guardar</button>
+    </div>
+  </div>
+</div>
