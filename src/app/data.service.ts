@@ -85,6 +85,20 @@ crearInscripcion(data: any): Observable<any> {
   );
 }
 
+//Metodo para guardar el arancel
+guardarArancel(arancel: any): Observable<any> {
+  const url = `${this.apiUrl}/arancel/add/`; // Ajusta la URL según tu backend
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
+
+  return this.http.post<any>(url, arancel, httpOptions).pipe(
+    catchError(this.handleError)
+  );
+}
+
    // Método para obtener la lista de tutores desde el backend
    getRelacionesTutorAlumno(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/tutores/tutoralumno/`).pipe(
@@ -93,10 +107,39 @@ crearInscripcion(data: any): Observable<any> {
   }
 
   getInscripciones(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/inscripciones/create/`).pipe(
+    return this.http.get<any[]>(`${this.apiUrl}/create/`).pipe(
       catchError(this.handleError)
     );
   }
+  
+  getListaInscripciones(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl);
+  }
+
+ // Método para generar el pagaré en PDF
+generarPagarePDF(id: number): Observable<Blob> {
+  const url = `${this.apiUrl}/generar_pagare_pdf/${id}/`; // Ajusta la URL según tu backend
+  return this.http.get(url, { responseType: 'blob' }).pipe(
+    catchError(this.handleError)
+  );
+}
+
+// Método para generar la ficha de inscripción en PDF
+generarFichaInscripcionPDF(id: number): Observable<Blob> {
+  const url = `${this.apiUrl}/genera_ficha_pdf/${id}/`; // Ajusta la URL según tu backend
+  return this.http.get(url, { responseType: 'blob' }).pipe(
+    catchError(this.handleError)
+  );
+}
+
+// Método para generar el contrato en PDF
+generarContratoPDF(id: number): Observable<Blob> {
+  const url = `${this.apiUrl}/generar_pdf/${id}/`; // Ajusta la URL según tu backend
+  return this.http.get(url, { responseType: 'blob' }).pipe(
+    catchError(this.handleError)
+  );
+}
+
 
   // Método de manejo de errores genérico
   private handleError(error: HttpErrorResponse) {

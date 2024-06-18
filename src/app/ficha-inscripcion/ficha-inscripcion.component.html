@@ -1,0 +1,21 @@
+<div *ngIf="inscripcionesSeleccionadas.length > 0">
+    <h2>Detalle de Inscripciones</h2>
+    <div *ngFor="let inscripcion of inscripcionesSeleccionadas">
+      <p>Alumno: {{ inscripcion.alumno }} {{ inscripcion.apellido }}</p>
+      <p>Cédula: {{ inscripcion.cedula }}</p>
+      <p>Tutor: {{ inscripcion.tutor }}</p>
+      <p>Fecha de Inscripción: {{ inscripcion.fecha_inscripcion }}</p>
+      <p>Nivel: {{ inscripcion.nivel }}</p>
+      <p>Grado: {{ inscripcion.grado }}</p>
+      <p>Arancel: {{ inscripcion.arancel }}</p>
+      <p>Cuota: {{ inscripcion.cuota }}</p>
+      <p>Turno: {{ inscripcion.turno }}</p>
+      <p>Matrícula: {{ inscripcion.matricula }}</p>
+      <!-- Agrega más detalles según sea necesario -->
+  
+      <button (click)="generarPagarePDF(inscripcion.id)">Generar Pagare PDF</button>
+      <button (click)="generarFichaInscripcionPDF(inscripcion.id)">Generar Ficha de Inscripción PDF</button>
+      <button (click)="generarContratoPDF(inscripcion.id)">Generar Contrato PDF</button>
+    </div>
+  </div>
+  

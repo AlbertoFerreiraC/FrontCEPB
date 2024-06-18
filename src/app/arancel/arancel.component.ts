@@ -32,6 +32,7 @@ export class ArancelComponent implements OnInit {
     this.dataService.getInscripciones().subscribe(
       (inscripciones: any[]) => {
         this.inscripciones = inscripciones;
+        console.log('Inscripciones cargadas:', this.inscripciones);
       },
       (error) => {
         console.error('Error al cargar las inscripciones:', error);
@@ -41,7 +42,15 @@ export class ArancelComponent implements OnInit {
 
   guardar(): void {
     console.log('Arancel a guardar:', this.arancel);
-    // Lógica para guardar el arancel utilizando el servicio DataService
-    // this.dataService.guardarArancel(this.arancel).subscribe(...);
+    this.dataService.guardarArancel(this.arancel).subscribe(
+      (respuesta) => {
+        console.log('Arancel guardado exitosamente:', respuesta);
+        // Puedes añadir aquí lógica adicional como mostrar un mensaje de éxito o redirigir a otra página
+      },
+      (error) => {
+        console.error('Error al guardar el arancel:', error);
+        // Aquí puedes manejar errores, como mostrar un mensaje de error al usuario
+      }
+    );
   }
 }

@@ -11,6 +11,6 @@ export class HomeComponent {
   constructor(private router: Router) {}
 
   navigateToInscribir() {
-    this.router.navigate(['/inscripcion']);
+    this.router.navigate(['/lista-inscripcion']);
   }
 }

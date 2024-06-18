@@ -1,0 +1,41 @@
+<div *ngIf="errorMessage" class="error-message">
+  {{ errorMessage }}
+</div>
+
+<!-- Campo de búsqueda por número de cédula -->
+<input type="text" [(ngModel)]="searchCedula" (input)="filterInscripciones()" placeholder="Buscar por Cédula del Alumno">
+<button type="button" (click)="clearFilter()">Limpiar</button>
+
+<!-- Botón para ver inscripciones seleccionadas -->
+<button type="button" (click)="verInscripcionesSeleccionadas()">Ver Ficha de Inscripcion</button>
+
+<table *ngIf="filteredInscripciones.length > 0">
+  <thead>
+    <tr>
+      <th></th> <!-- Columna para checkboxes -->
+      <th>ID</th>
+      <th>Alumno</th>
+      <th>Cedula</th>
+      <th>Tutor</th>
+      <th>Fecha de Inscripción</th>
+      <th>Descuento</th>
+      <th>Cuota</th>
+      <th>Estado</th>
+      <th>Periodo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let inscripcion of filteredInscripciones">
+      <td><input type="checkbox" [(ngModel)]="inscripcion.selected"></td> <!-- Checkbox para seleccionar inscripción -->
+      <td>{{ inscripcion.id }}</td>
+      <td>{{ inscripcion.alumno }}</td>
+      <td>{{ inscripcion.cedula }}</td>
+      <td>{{ inscripcion.tutor }}</td>
+      <td>{{ inscripcion.fecha_inscripcion }}</td>
+      <td>{{ inscripcion.descuento }}</td>
+      <td>{{ inscripcion.cuota }}</td>
+      <td>{{ inscripcion.estado }}</td>
+      <td>{{ inscripcion.periodo }}</td>
+    </tr>
+  </tbody>
+</table>
